@@ -1,32 +1,50 @@
 package bean;
 
-import javax.faces.bean.ApplicationScoped;
+import entidade.Pessoa;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.view.ViewScoped;
 
 @ManagedBean
 @SessionScoped
 public class MBPessoa {
 
-    private String nome;
+    private Pessoa pessoa;
+    private ArrayList<String> perfisDisponiveis;
+   // private DAOPessoa daoPessoa;
 
     public MBPessoa() {
+        this.pessoa = new Pessoa();
+        
+        this.perfisDisponiveis = new ArrayList<String>();
+        this.perfisDisponiveis.add("Estudante");
+        this.perfisDisponiveis.add("Técnico");
+        this.perfisDisponiveis.add("Professor");
+        this.perfisDisponiveis.add("Terceirizado");
+        
+        //this.daoPessoa = new DAOPessoa();
     }
 
-    public String getNome() {
-        return nome;
+    public ArrayList<String> getPerfisDisponiveis() {
+        return perfisDisponiveis;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPerfisDisponiveis(ArrayList<String> perfisDisponiveis) {
+        this.perfisDisponiveis = perfisDisponiveis;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public String navegar() {
         String retorno = "";
 
-        if (this.nome.equals("abc")) {
+        if (this.pessoa.getNome().equals("abc")) {
             retorno = "pagina3";
         } else {
             retorno = "pagina2";
@@ -34,4 +52,9 @@ public class MBPessoa {
 
         return retorno;
     }
+    
+    
+//    public String cadastrar(){
+//       // daoPessoa.inserir(this.pessoa);
+//    }
 }
